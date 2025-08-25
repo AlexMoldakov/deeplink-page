@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+      <meta charset="UTF-8" />
+      <title>Открыть приложение</title>
+      <style>
+            body {
+                  font-family: Arial, sans-serif;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 100vh;
+                  margin: 0;
+                  background: #f5f5f5;
+            }
+
+            button {
+                  font-size: 18px;
+                  padding: 12px 24px;
+                  border: none;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  background-color: #007bff;
+                  color: white;
+            }
+
+            button:hover {
+                  background-color: #0056b3;
+            }
+      </style>
+</head>
+
+<body>
+      <button onclick="window.location.href='sunmail://oauth/callback?code=TEST_CODE&state=XYZ'">
+            Открыть приложение
+      </button>
+</body>
+
+</html>
