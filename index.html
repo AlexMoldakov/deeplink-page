@@ -117,11 +117,13 @@
         const baseUrl = 'sunmail://oauth/callback';
 
         const url = new URL(window.location.href);
-        const code = url.searchParams.get('code') || 'ERROR_CODE';
-        const state = url.searchParams.get('state') || 'ERROR_STATE';
-        return `${baseUrl}?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
+        // const code = url.searchParams.get('code') || 'ERROR_CODE';
+        // const state = url.searchParams.get('state') || 'ERROR_STATE';
+        // return `${baseUrl}?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
+        return baseUrl;
       } catch {
-        return `${baseUrl}?code=ERROR_CODE&state=ERROR_STATE`;
+        return baseUrl;
+        // return `${baseUrl}?code=ERROR_CODE&state=ERROR_STATE`;
       }
     }
 
