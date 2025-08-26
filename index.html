@@ -161,12 +161,13 @@
     }
 
     async function handleProceed() {
-      const ok = await sendInitRequest();
-      if (ok) {
-        goToApp();
-      } else {
-        showError('Что-то пошло не так. Попробуйте ещё раз.');
-      }
+      goToApp();
+      // const ok = await sendInitRequest();
+      // if (ok) {
+      //   goToApp();
+      // } else {
+      //   showError('Что-то пошло не так. Попробуйте ещё раз.');
+      // }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
