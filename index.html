@@ -162,28 +162,28 @@
       }
     }
 
-    async function handleProceed() {
-      goToApp();
-      // const ok = await sendInitRequest();
-      // if (ok) {
-      //   goToApp();
-      // } else {
-      //   showError('Что-то пошло не так. Попробуйте ещё раз.');
-      // }
-    }
+    // async function handleProceed() {
+    //   goToApp();
+    // const ok = await sendInitRequest();
+    // if (ok) {
+    //   goToApp();
+    // } else {
+    //   showError('Что-то пошло не так. Попробуйте ещё раз.');
+    // }
+    // }
 
     document.addEventListener('DOMContentLoaded', async () => {
-      goToApp();
+      // goToApp();
 
-      // if (!sessionStorage.getItem('oauth_callback_sent')) {
-      //   sessionStorage.setItem('oauth_callback_sent', '1');
-      //   const ok = await sendInitRequest();
-      //   if (ok) {
-      //     goToApp();
-      //   } else {
-      //     showError('Что-то пошло не так. Попробуйте ещё раз.');
-      //   }
-      // }
+      if (!sessionStorage.getItem('oauth_callback_sent')) {
+        sessionStorage.setItem('oauth_callback_sent', '1');
+        const ok = await sendInitRequest();
+        if (ok) {
+          goToApp();
+        } else {
+          showError('Что-то пошло не так. Попробуйте ещё раз.');
+        }
+      }
     });
 
   </script>
@@ -199,7 +199,7 @@
     <p class="subtitle">Вы можете перейти в приложение для продолжения работы.</p>
 
     <div class="actions">
-      <button class="button" onclick="handleProceed()">Перейти в приложение</button>
+      <button class="button" onclick="goToApp()">Перейти в приложение</button>
     </div>
 
   </div>
