@@ -156,7 +156,7 @@
 
                         return { ok: false, status: res.status, error: errorMessage };
                   } catch (e) {
-                        const msg = (e && e.message) ? e.message : '';
+                        const msg = (e && e.message) ? e.message : e;
                         return { ok: false, status: 0, error: msg };
                   }
             }
