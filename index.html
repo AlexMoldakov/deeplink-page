@@ -112,19 +112,18 @@
             }
       </style>
       <script>
-            function buildDeepLink(status = 'success', message = '') {
-                  const baseUrl = 'sunmail://oauth/callback';
-                  if (status === 'success') return `${baseUrl}/success`;
-                  const suffix = message ? `?message=${encodeURIComponent(message)}` : '';
-                  return `${baseUrl}/error${suffix}`;
+            const baseDeepLink = 'sunmail://oauth/callback';
+            const baseUrl = 'https://sunmail-staging-backend-nlhnj.ondigitalocean.app/api/email-addresses/oauth/callback';
+
+            function buildDeepLink(status = 'success') {
+                  if (status === 'success') return `${baseDeepLink}/success`;
+                  return `${baseDeepLink}/error`;
             }
 
             function goToApp() {
                   const result = window.__oauthResult || { ok: false, error: '' };
-                  const deepLink = result.ok
-                        ? buildDeepLink('success')
-                        : buildDeepLink('error', result.error || 'Unknown error');
-                  window.location.href = deepLink;
+                  const finalDeepLink = result.ok ? buildDeepLink('success') : buildDeepLink('error');
+                  window.location.href = finalDeepLink;
             }
 
             async function sendInitRequest() {
@@ -132,7 +131,6 @@
                         const current = new URL(window.location.href);
                         const code = current.searchParams.get('code') || 'ERROR_CODE';
                         const state = current.searchParams.get('state') || 'ERROR_STATE';
-                        const baseUrl = 'https://sunmail-staging-backend-nlhnj.ondigitalocean.app/api/email-addresses/oauth/callback';
 
                         const endpoint = `${baseUrl}?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
 
@@ -147,6 +145,7 @@
 
                         let errorMessage = '';
                         const contentType = res.headers.get('content-type') || '';
+
                         try {
                               if (contentType.includes('application/json')) {
                                     const data = await res.json();
@@ -169,35 +168,25 @@
 
             function showError(message) {
                   const subtitle = document.querySelector('.subtitle');
+
                   if (subtitle) {
                         subtitle.textContent = message || 'Что-то пошло не так. Попробуйте ещё раз.';
                         subtitle.classList.add('error');
                   }
             }
 
-            // async function handleProceed() {
-            //   goToApp();
-            // const ok = await sendInitRequest();
-            // if (ok) {
-            //   goToApp();
-            // } else {
-            //   showError('Что-то пошло не так. Попробуйте ещё раз.');
-            // }
-            // }
+
 
             document.addEventListener('DOMContentLoaded', async () => {
-                  if (!sessionStorage.getItem('oauth_callback_sent')) {
-                        sessionStorage.setItem('oauth_callback_sent', '1');
-                        const result = await sendInitRequest();
-                        window.__oauthResult = result;
-                        if (result.ok) {
-                              // Успех: сразу в приложение
-                              window.location.href = buildDeepLink('success');
-                        } else {
-                              // Ошибка: показать на странице и перейти по error deep link
-                              showError(result.error);
-                              window.location.href = buildDeepLink('error', result.error);
-                        }
+
+                  const result = await sendInitRequest();
+
+                  window.__oauthResult = result;
+
+                  if (result.ok) {
+                        window.location.href = buildDeepLink('success');
+                  } else {
+                        showError(result.error);
                   }
             });
 
