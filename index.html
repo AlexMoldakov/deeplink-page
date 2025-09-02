@@ -2,207 +2,222 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SunMail — почта успешно добавлена</title>
-  <style>
-    :root {
-      --text-primary: #181818;
-      --text-secondary: #6d6b68;
-      --text-on-color: #181818;
-      --control-primary: #ffd53f;
-      --control-primary-hover: #ffe27a;
-      --shadow: 0 16px 48px 0 #3d435433;
-      --radius: 24px;
-    }
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>SunMail — добавление почты</title>
+      <style>
+            :root {
+                  --text-primary: #181818;
+                  --text-secondary: #6d6b68;
+                  --text-on-color: #181818;
+                  --control-primary: #ffd53f;
+                  --control-primary-hover: #ffe27a;
+                  --shadow: 0 16px 48px 0 #3d435433;
+                  --radius: 24px;
+            }
 
-    html,
-    body {
-      height: 100%;
-    }
+            html,
+            body {
+                  height: 100%;
+            }
 
-    body {
-      margin: 0;
-      font-family: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-      background: linear-gradient(152.89deg, #FEE6A8 7.69%, #FE9F64 91.36%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-primary);
-    }
+            body {
+                  margin: 0;
+                  font-family: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+                  background: linear-gradient(152.89deg, #FEE6A8 7.69%, #FE9F64 91.36%);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--text-primary);
+            }
 
-    .content {
-      background: #fff;
-      width: min(536px, 100%);
-      min-height: 300px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 60px 64px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
+            .content {
+                  background: #fff;
+                  width: min(536px, 100%);
+                  min-height: 300px;
+                  border-radius: var(--radius);
+                  box-shadow: var(--shadow);
+                  padding: 60px 64px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 16px;
+            }
 
-    .header {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
+            .header {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 12px;
+                  margin-bottom: 8px;
+            }
 
-    .header__logo {
-      width: 194px;
-      height: 40px;
-    }
+            .header__logo {
+                  width: 194px;
+                  height: 40px;
+            }
 
 
-    .title {
-      margin: 0;
-      font-size: 22px;
-      line-height: 30px;
-      font-weight: 600;
-      text-align: center;
-    }
+            .title {
+                  margin: 0;
+                  font-size: 22px;
+                  line-height: 30px;
+                  font-weight: 600;
+                  text-align: center;
+            }
 
-    .subtitle {
-      margin: 0;
-      font-size: 15px;
-      line-height: 22px;
-      color: var(--text-secondary);
-      text-align: center;
-    }
+            .subtitle {
+                  margin: 0;
+                  font-size: 15px;
+                  line-height: 22px;
+                  color: var(--text-secondary);
+                  text-align: center;
+            }
 
-    .subtitle.error {
-      color: #e10918;
-      /* токен error из темы */
-    }
+            .subtitle.error {
+                  color: #e10918;
+                  /* токен error из темы */
+            }
 
-    .actions {
-      margin-top: auto;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
+            .actions {
+                  margin-top: auto;
+                  display: flex;
+                  justify-content: center;
+                  width: 100%;
+            }
 
-    .button {
-      appearance: none;
-      border: 0;
-      outline: 0;
-      border-radius: 40px;
-      padding: 14px 24px;
-      width: 408px;
-      height: 64px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      background: var(--control-primary);
-      color: var(--text-on-color);
-      transition: background-color .15s ease, transform .05s ease;
-    }
+            .button {
+                  appearance: none;
+                  border: 0;
+                  outline: 0;
+                  border-radius: 40px;
+                  padding: 14px 24px;
+                  width: 408px;
+                  height: 64px;
+                  font-size: 16px;
+                  font-weight: 500;
+                  cursor: pointer;
+                  background: var(--control-primary);
+                  color: var(--text-on-color);
+                  transition: background-color .15s ease, transform .05s ease;
+            }
 
-    .button:hover {
-      background: var(--control-primary-hover);
-    }
+            .button:hover {
+                  background: var(--control-primary-hover);
+            }
 
-    .button:active {
-      transform: translateY(1px);
-    }
-  </style>
-  <script>
-    function buildDeepLink() {
-      try {
-        const baseUrl = 'sunmail://oauth/callback';
+            .button:active {
+                  transform: translateY(1px);
+            }
+      </style>
+      <script>
+            function buildDeepLink(status = 'success', message = '') {
+                  const baseUrl = 'sunmail://oauth/callback';
+                  if (status === 'success') return `${baseUrl}/success`;
+                  const suffix = message ? `?message=${encodeURIComponent(message)}` : '';
+                  return `${baseUrl}/error${suffix}`;
+            }
 
-        const url = new URL(window.location.href);
-        // const code = url.searchParams.get('code') || 'ERROR_CODE';
-        // const state = url.searchParams.get('state') || 'ERROR_STATE';
-        // return `${baseUrl}?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
-        return baseUrl;
-      } catch {
-        return baseUrl;
-        // return `${baseUrl}?code=ERROR_CODE&state=ERROR_STATE`;
-      }
-    }
+            function goToApp() {
+                  const result = window.__oauthResult || { ok: false, error: '' };
+                  const deepLink = result.ok
+                        ? buildDeepLink('success')
+                        : buildDeepLink('error', result.error || 'Unknown error');
+                  window.location.href = deepLink;
+            }
 
-    function goToApp() {
-      const deepLink = buildDeepLink();
-      window.location.href = deepLink;
-    }
+            async function sendInitRequest() {
+                  try {
+                        const current = new URL(window.location.href);
+                        const code = current.searchParams.get('code') || 'ERROR_CODE';
+                        const state = current.searchParams.get('state') || 'ERROR_STATE';
+                        const baseUrl = 'https://sunmail-staging-backend-nlhnj.ondigitalocean.app/api/email-addresses/oauth/callback';
 
-    async function sendInitRequest() {
-      try {
-        const current = new URL(window.location.href);
-        const code = current.searchParams.get('code') || 'ERROR_CODE';
-        const state = current.searchParams.get('state') || 'ERROR_STATE';
-        const redirectUri = current.searchParams.get('redirect_uri') || 'ERROR_REDIRECT_URI';
-        const baseUrl = 'https://sunmail-staging-backend-nlhnj.ondigitalocean.app/api/email-addresses/oauth/callback';
+                        const endpoint = `${baseUrl}?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
 
-        const endpoint = `${baseUrl}?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
+                        const res = await fetch(endpoint, {
+                              method: 'GET',
+                              headers: { 'accept': '*/*' },
+                        });
 
-        const res = await fetch(endpoint, {
-          method: 'GET',
-          headers: { 'accept': '*/*' },
-        });
+                        if (res.ok) {
+                              return { ok: true, status: res.status };
+                        }
 
-        return res.ok;
-      } catch (e) {
-        console.error('OAuth callback request error', e);
-        return false;
-      }
-    }
+                        let errorMessage = '';
+                        const contentType = res.headers.get('content-type') || '';
+                        try {
+                              if (contentType.includes('application/json')) {
+                                    const data = await res.json();
+                                    errorMessage = data?.message || data?.error || JSON.stringify(data);
+                              } else {
+                                    errorMessage = await res.text();
+                              }
+                        } catch (_) {
+                              // ignore body parse error
+                        }
 
-    function showError(message) {
-      const subtitle = document.querySelector('.subtitle');
-      if (subtitle) {
-        subtitle.textContent = message || 'Что-то пошло не так. Попробуйте ещё раз.';
-        subtitle.classList.add('error');
-      }
-    }
+                        errorMessage = errorMessage || `HTTP ${res.status} ${res.statusText}`;
+                        return { ok: false, status: res.status, error: errorMessage };
+                  } catch (e) {
+                        console.error('OAuth callback request error', e);
+                        const msg = (e && e.message) ? e.message : 'Network/CORS error';
+                        return { ok: false, status: 0, error: `Network/CORS error: ${msg}` };
+                  }
+            }
 
-    // async function handleProceed() {
-    //   goToApp();
-    // const ok = await sendInitRequest();
-    // if (ok) {
-    //   goToApp();
-    // } else {
-    //   showError('Что-то пошло не так. Попробуйте ещё раз.');
-    // }
-    // }
+            function showError(message) {
+                  const subtitle = document.querySelector('.subtitle');
+                  if (subtitle) {
+                        subtitle.textContent = message || 'Что-то пошло не так. Попробуйте ещё раз.';
+                        subtitle.classList.add('error');
+                  }
+            }
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      // goToApp();
+            // async function handleProceed() {
+            //   goToApp();
+            // const ok = await sendInitRequest();
+            // if (ok) {
+            //   goToApp();
+            // } else {
+            //   showError('Что-то пошло не так. Попробуйте ещё раз.');
+            // }
+            // }
 
-      if (!sessionStorage.getItem('oauth_callback_sent')) {
-        sessionStorage.setItem('oauth_callback_sent', '1');
-        const ok = await sendInitRequest();
-        if (ok) {
-          goToApp();
-        } else {
-          showError('Что-то пошло не так. Попробуйте ещё раз.');
-        }
-      }
-    });
+            document.addEventListener('DOMContentLoaded', async () => {
+                  if (!sessionStorage.getItem('oauth_callback_sent')) {
+                        sessionStorage.setItem('oauth_callback_sent', '1');
+                        const result = await sendInitRequest();
+                        window.__oauthResult = result;
+                        if (result.ok) {
+                              // Успех: сразу в приложение
+                              window.location.href = buildDeepLink('success');
+                        } else {
+                              // Ошибка: показать на странице и перейти по error deep link
+                              showError(result.error);
+                              window.location.href = buildDeepLink('error', result.error);
+                        }
+                  }
+            });
 
-  </script>
+      </script>
 </head>
 
 <body>
-  <div class="content">
-    <div class="header" aria-hidden="true">
-      <img class="header__logo" src="Logo.png" alt="" />
-    </div>
+      <div class="content">
+            <div class="header" aria-hidden="true">
+                  <img class="header__logo" src="Logo.png" alt="" />
+            </div>
 
-    <h1 class="title">Почта успешно добавлена</h1>
-    <p class="subtitle">Вы можете перейти в приложение для продолжения работы.</p>
+            <h1 class="title">Добавление почты</h1>
+            <p class="subtitle">Переадресуем вас в приложение...</p>
 
-    <div class="actions">
-      <button class="button" onclick="goToApp()">Перейти в приложение</button>
-    </div>
+            <div class="actions">
+                  <button class="button" onclick="goToApp()">Перейти в приложение</button>
+            </div>
 
-  </div>
+      </div>
 </body>
 
 </html>
